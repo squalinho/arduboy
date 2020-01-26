@@ -33,6 +33,7 @@ String mesTime = "Temps ON";
 String sep3 = "REUSSI:";
 String sep4 = " RATE:";
 boolean multiTrou = false;
+String modeJeu = "";
 int ordreTrou = 0;
 
 void setup() {
@@ -57,24 +58,34 @@ void loop() {
 
 
 if(menu == 0){
-    //8 -> Multiplications
-    //18 - > Multi-Trous
-    //28 - > Options
+
+    //+10
+    //8 -> Additions
+    //18 -> Multiplications
+    //28 - > Multi-Trous
+    //38 - > Options
 
     
           arduboy.setCursor(10,5);
-          arduboy.print("Multiplications");
+          arduboy.print("Additions");
           arduboy.setCursor(10,15);
-          arduboy.print("Multi-trous");
+          arduboy.print("Soustractions");
           arduboy.setCursor(10,25);
+          arduboy.print("Multiplications");
+          arduboy.setCursor(10,35);
+          arduboy.print("Multi-trous");
+          arduboy.setCursor(10,45);
           arduboy.print("Options");
+
+
+          
           arduboy.drawCircle(4, menuY, 2, WHITE);
           //arduboy.setCursor(10,50);
           //arduboy.print(ordreTrou);
 
           if(arduboy.justPressed(DOWN_BUTTON)){
             menuY += 10;
-            if(menuY > 28){
+            if(menuY > 48){
               menuY = 8;
             }
           }
@@ -82,18 +93,19 @@ if(menu == 0){
           if(arduboy.justPressed(UP_BUTTON)){
             menuY -= 10;
             if(menuY < 8){
-              menuY = 28;
+              menuY = 48;
             }
           }
           if(arduboy.justPressed(A_BUTTON)){
 
-            if(menuY == 8){
+            if(menuY == 28){
               menu = 1;
               multiTrou = false;
               oldTemps = (millis()/1000);
              
             }
-            else if(menuY == 18){
+            else if(menuY == 38){
+              modeJeu = "multitrous";
               menu = 1;
               multiTrou = true;
               ordreTrou = random(0,100);
@@ -102,7 +114,7 @@ if(menu == 0){
               
               
             }
-            else if(menuY == 28){
+            else if(menuY == 48){
               menu = 10;
               menuY = 8;
             }
