@@ -35,6 +35,8 @@ String sep4 = " RATE:";
 boolean multiTrou = false;
 String modeJeu = "";
 int ordreTrou = 0;
+int tableMini = 1;
+int tableMaxi = 10;
 
 void setup() {
   arduboy.begin();
@@ -124,7 +126,7 @@ if(menu == 0){
 
 
 else if(menu == 10){
-
+//options
           arduboy.drawCircle(4, menuY, 2, WHITE);
 
           String opt1 = "Timing : ";
@@ -279,7 +281,10 @@ else if(menu == 1){
                               
                               winner = true;
                           
-                              tab1 = random(1,10);
+                              tab1 = random(tableMini,tableMaxi);
+
+
+                              
                               tab2 = random(1,10);
                               valeur = 0;
                               win += 1;
